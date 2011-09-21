@@ -1,0 +1,8 @@
+<h1>Emails#index</h1>
+<p>Find me in app/views/inbox/emails/index.html.erb</p>
+
+<% @emails.each do |email| %>
+  <%= email.inspect  %>
+<% end %>
+
+<%= link_to "New", new_email_path %>

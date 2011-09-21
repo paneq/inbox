@@ -1,0 +1,9 @@
+<%= form_for(@email) do |f| %>
+  <%= f.text_field :from %>
+  <%= f.text_field :to %>
+  <%= f.text_field :cc %>
+  <%= f.text_field :bcc %>
+  <%= f.text_field :subject %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
