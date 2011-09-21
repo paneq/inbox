@@ -7,11 +7,11 @@ require "inbox/version"
 Gem::Specification.new do |s|
   s.name        = "inbox"
   s.version     = Inbox::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Inbox."
-  s.description = "TODO: Description of Inbox."
+  s.authors     = ["Robert Pankowecki"]
+  s.email       = ["robert.pankowecki@gmail.com"]
+  s.homepage    = "https://github.com/paneq/inbox"
+  s.summary     = "Displays emails sent to the users in action_mailer.delivery_method = :test mode."
+  s.description = "Navigate to inbox and check emails that users would recive. Use this in your acceptance tests and stay happy."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
