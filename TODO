@@ -3,3 +3,4 @@
  *  Make it easy to parse the website using Capybara ( ex. matching dt/dd pair together)
  *  Skip this /emails part from URLS
  *  Nicer create look & feel
+ * Mention inspirations in readme (http://api.rubyonrails.org/, https://github.com/37signals/mail_view, https://github.com/ryanb/letter_opener)
