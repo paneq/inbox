@@ -1,2 +1,48 @@
-<h1>Emails#show</h1>
-<p>Find me in app/views/inbox/emails/show.html.erb</p>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<%= @body_part.charset %>" />
+</head>
+<div id="message_headers">
+  <dl>
+    <dt>From:</dt>
+    <dd><%= Array.wrap(@email.from).join(", ") %> &nbsp;</dd>
+
+    <dt>Subject:</dt>
+    <dd><strong><%= @email.subject %></strong> &nbsp;</dd>
+
+    <dt>Date:</dt>
+    <dd><%= Time.now.strftime("%b %e, %Y %I:%M:%S %p %Z") %> &nbsp;</dd>
+
+    <dt>To:</dt>
+    <dd><%= Array.wrap(@email.to).join(", ") %> &nbsp;</dd>
+
+    <% if @email.cc.present? %>
+      <dt>Cc:</dt>
+      <dd><%= Array.wrap(@email.cc).join(", ") %> &nbsp;</dd>
+    <% end %>
+
+    <% if @email.bcc.present? %>
+      <dt>Bcc:</dt>
+      <dd><%= Array.wrap(@email.bcc).join(", ") %> &nbsp;</dd>
+    <% end %>
+  </dl>
+
+  <% if @email.multipart? %>
+    <p class="alternate">
+      <% if @body_part.content_type && @body_part.content_type.match(/text\/html/) %>
+        <a href="<%= :x %>.txt">View plain text version</a>
+      <% else %>
+        <a href="<%= :y %>.html">View HTML version</a>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<div>
+  <% if @body_part.content_type && @body_part.content_type.match(/text\/html/) %>
+    <%= @body_part.body %>
+  <% else %>
+    <pre id="message_body">
+      <%= @body_part.body %>
+    </pre>
+  <% end %>
+</div>

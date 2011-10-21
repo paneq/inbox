@@ -1,0 +1,25 @@
+<% content_for :application do %>
+  <div class="panel panel_results" id="panel" style="">
+    <div class="result">
+      <ul>
+        <% @emails.each_with_index do |email, index| %>
+          <% klass = params[:id] == email.message_id ? :current : nil %>
+          <li class="<%=klass%>" >
+            <%= link_to email_path(:id => email.message_id, :mail => @mail) do %>
+              <h1>
+                <%= email.subject %>
+              </h1>
+              <p>
+                <%= email.from.join(", ") %>
+              </p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%= yield %>
+<% end %>
+
+<%= render :file => 'layouts/inbox/application' %>

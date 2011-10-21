@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Inbox</title>
-  <%= stylesheet_link_tag    "inbox/application" %>
-  <%= javascript_include_tag "inbox/application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Inbox</title>
+    <%= stylesheet_link_tag    "inbox/application" %>
+    <%= javascript_include_tag "inbox/application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <%= tmp = yield :application %>
+    <%= yield if tmp.blank? %>
 
-</body>
+  </body>
 </html>

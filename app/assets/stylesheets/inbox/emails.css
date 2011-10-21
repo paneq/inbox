@@ -2,3 +2,58 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+#message_headers {
+    width: 75%;
+    padding: 20px 0 20px 0;
+    margin: 0;
+    background: #fff;
+    font-size: 12px;
+    font-family: "Lucida Grande";
+    border-bottom: 1px solid #dedede;
+    overflow: hidden;
+    float: left;
+}
+
+#message_headers dl {
+    margin: 0;
+    padding: 0;
+}
+
+#message_headers dt {
+    width: 60px;
+    padding: 1px;
+    float: left;
+    text-align: right;
+    font-weight: bold;
+    color: #7f7f7f;
+}
+
+#message_headers dd {
+    margin-left: 70px;
+    padding: 1px;
+}
+
+#message_headers p.alternate {
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
+
+#message_headers p.alternate a {
+    color: #09c;
+}
+
+pre#message_body {
+    padding: 10px;
+    white-space: pre-wrap;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}

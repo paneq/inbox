@@ -1,0 +1,5 @@
+ *  Make sure multipart works fine!
+ *  Write tests
+ *  Make it easy to parse the website using Capybara ( ex. matching dt/dd pair together)
+ *  Skip this /emails part from URLS
+ *  Nicer create look & feel
