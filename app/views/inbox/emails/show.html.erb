@@ -38,8 +38,9 @@
 </div>
 
 <div>
+  
   <% if @body_part.content_type && @body_part.content_type.match(/text\/html/) %>
-    <%= @body_part.body %>
+    <%= raw @body_part.body %>
   <% else %>
     <pre id="message_body">
       <%= @body_part.body %>
