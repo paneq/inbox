@@ -10,15 +10,17 @@ module Inbox
     end
 
     def index
-      
+
     end
-  
+
     def show
       @email = @emails.find{|e| e.message_id == params[:id] }
       @body_part = @email
 
       if @email.multipart?
-        content_type = Rack::Mime.mime_type(params[:format] || :html )
+        format = "." + (params[:format] || :html).to_s
+        content_type = Rack::Mime.mime_type(format)
+        @email.parts.each{|p| puts p.content_type  }
         @body_part = @email.parts.find { |part| part.content_type.match(content_type) } || @email.parts.first
       end
     end
