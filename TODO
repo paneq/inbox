@@ -1,7 +1,9 @@
  *  Make sure multipart works fine!
  *  Write tests
+ *  Test on travis
+ *  Release
  *  Make it easy to parse the website using Capybara ( ex. matching dt/dd pair together)
  *  Skip this /emails part from URLS
  *  Nicer create look & feel
- * Mention inspirations in readme (http://api.rubyonrails.org/, https://github.com/37signals/mail_view, https://github.com/ryanb/letter_opener)
- * Make "/" webiste that will allow to fill in email to "log into" :-)
+ *  Mention inspirations in readme (http://api.rubyonrails.org/, https://github.com/37signals/mail_view, https://github.com/ryanb/letter_opener)
+ *  Make "/" webiste that will allow to fill in email to "log into" :-)
