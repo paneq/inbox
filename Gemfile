@@ -12,3 +12,5 @@ gemspec
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+gem "sqlite3", "= 1.3.5"
