@@ -7,3 +7,4 @@
  *  Nicer create look & feel
  *  Mention inspirations in readme (http://api.rubyonrails.org/, https://github.com/37signals/mail_view, https://github.com/ryanb/letter_opener)
  *  Make "/" webiste that will allow to fill in email to "log into" :-)
+ *  Support attachments
