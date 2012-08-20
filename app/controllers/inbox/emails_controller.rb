@@ -1,4 +1,5 @@
 require 'mail'
+require 'pathname'
 
 module Inbox
   class EmailsController < ApplicationController
@@ -6,7 +7,20 @@ module Inbox
     layout 'inbox/inbox'
     before_filter do
       @mail = params[:mail]
-      @emails = Mail::TestMailer.deliveries.select{|e| Array.wrap(e.to).any?{|m| m.include?(@mail) } }.reverse
+      deliveries = case ActionMailer::Base.delivery_method
+      when :test
+        Mail::TestMailer.deliveries
+      when :inbox
+        # Inbox.deliveries ?
+        location = ActionMailer::Base.inbox_settings[:location]
+        location.each_child(false).map do |email_pathname|
+          Mail.read( location.join(  email_pathname  ) )
+        end
+      else
+        raise "ArgumentError"
+      end
+
+      @emails = deliveries.select{|e| Array.wrap(e.to).any?{|m| m.include?(@mail) } }.reverse
     end
 
     def index
