@@ -38,6 +38,13 @@ Rails.application.routes.draw do
 end
 ```
 
+Feel free to mount it under different route
+if this one is already taken in your application
+
+```ruby
+  mount Inbox::Engine => "/mailer"
+```
+
 
 Usage
 -----
@@ -45,7 +52,7 @@ Usage
 ### Manual
 
 Navigate to `/inbox/<email>/emails` ex.: `/inbox/robert.pankowecki@gmail.com/emails`
-to see a list of emails that would be delivered to the user.
+to see a list of emails that would have been delivered to the user.
 
 Click subject of the email to see its content
 
@@ -68,14 +75,15 @@ for checking the content of page. And you can reuse your matchers.
 ### Sending
 
 Navigate to `/inbox/<email>/emails/new` ex.: `/inbox/robert.pankowecki@gmail.com/emails/new`
-to see un ugly form for sending emails that you can use to play around and see if everything
+to see an ugly form for sending emails that you can use to play around and see if everything
 works fine.
 
 
 Async (distributed / queue)
 ---------------------------
 
-In case you want to have acceptance tests of emails that are sent using external process (resque, sidekiq, ...) just set
+In case you want to have acceptance tests of emails that are
+sent using external process (`resque`, `sidekiq`, ...) just set
 
 ```ruby
 config.action_mailer.delivery_method = :inbox
@@ -94,7 +102,7 @@ config.action_mailer.delivery_method = :test
 Look & Feel
 -----------
 
-http://img832.imageshack.us/img832/1333/screenshotinboxgooglech.png
+![Inbox gem look and feel](http://img832.imageshack.us/img832/1333/screenshotinboxgooglech.png)
 
 
 License
