@@ -105,6 +105,15 @@ Look & Feel
 ![Inbox gem look and feel](http://img832.imageshack.us/img832/1333/screenshotinboxgooglech.png)
 
 
+Inspirations
+------------
+
+* [https://github.com/37signals/mail_view](https://github.com/37signals/mail_view)
+* [https://github.com/ryanb/letter_opener](https://github.com/ryanb/letter_opener)
+* [https://github.com/suhrawardi/capybara_email/](https://github.com/suhrawardi/capybara_email/)
+* [https://github.com/pawelpacana/mail_inbox/](https://github.com/pawelpacana/mail_inbox/)
+* [http://api.rubyonrails.org/](http://api.rubyonrails.org/)
+
 License
 -------
 
