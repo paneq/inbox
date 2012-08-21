@@ -78,6 +78,12 @@ Navigate to `/inbox/<email>/emails/new` ex.: `/inbox/robert.pankowecki@gmail.com
 to see an ugly form for sending emails that you can use to play around and see if everything
 works fine.
 
+### Clear send emails
+
+```ruby
+  ActionMailer::Base.deliveries.clear # in :test mode
+  Inbox::FileDelivery.new(ActionMailer::Base.inbox_settings).clear # in :inbox mode
+```
 
 Async (distributed / queue)
 ---------------------------

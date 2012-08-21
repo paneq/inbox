@@ -1,7 +1,6 @@
 require "inbox/engine"
 require 'fileutils'
 require 'pathname'
-#require 'securerandom'
 
 module Inbox
   class FileDelivery
@@ -24,6 +23,11 @@ module Inbox
       end
     end
 
+    def clear
+      location.each_child(false).map do |email_pathname|
+        location.join(email_pathname).delete
+      end
+    end
   end
 
   ActionMailer::Base.add_delivery_method :inbox, Inbox::FileDelivery, Pathname.new("#{Dir.tmpdir}/mails")
