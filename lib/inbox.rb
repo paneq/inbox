@@ -5,12 +5,11 @@ require 'pathname'
 
 module Inbox
   class FileDelivery
+    attr_reader :location
 
-    def initialize(values)
-      self.settings = { :location => './mails' }.merge(values)
+    def initialize(location)
+      @location = location.freeze
     end
-
-    attr_accessor :settings
 
     def deliver!(mail)
       FileUtils.mkdir_p location
@@ -19,12 +18,13 @@ module Inbox
       end
     end
 
-    private
-
-    def location
-      settings[:location]
+    def deliveries
+      location.each_child(false).map do |email_pathname|
+        Mail.read( location.join(  email_pathname  ) )
+      end
     end
+
   end
 
-  ActionMailer::Base.add_delivery_method :inbox, Inbox::FileDelivery, :location => Pathname.new("#{Dir.tmpdir}/mails")
+  ActionMailer::Base.add_delivery_method :inbox, Inbox::FileDelivery, Pathname.new("#{Dir.tmpdir}/mails")
 end

@@ -7,20 +7,16 @@ module Inbox
     layout 'inbox/inbox'
     before_filter do
       @mail = params[:mail]
-      deliveries = case ActionMailer::Base.delivery_method
+      mailer = case ActionMailer::Base.delivery_method
       when :test
-        Mail::TestMailer.deliveries
+        Mail::TestMailer
       when :inbox
-        # Inbox.deliveries ?
-        location = ActionMailer::Base.inbox_settings[:location]
-        location.each_child(false).map do |email_pathname|
-          Mail.read( location.join(  email_pathname  ) )
-        end
+        Inbox::FileDelivery.new ActionMailer::Base.inbox_settings
       else
         raise "ArgumentError"
       end
 
-      @emails = deliveries.select{|e| Array.wrap(e.to).any?{|m| m.include?(@mail) } }.reverse
+      @emails = mailer.deliveries.select{|e| Array.wrap(e.to).any?{|m| m.include?(@mail) } }.reverse
     end
 
     def index
