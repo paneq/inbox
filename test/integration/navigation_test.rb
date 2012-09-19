@@ -15,7 +15,7 @@ class NavigationTest < Bbq::TestCase
     @user.fill_in "email[body]",    with: "How are you"
     @user.click_on "Create Email"
 
-    @user.visit "/inbox/#{@email}/emails/new"
+    @user.visit "/inbox/#{@email}/emails"
     assert @user.see? "Hello"
     @user.click_on "Hello"
     assert @user.see? "How are you"
