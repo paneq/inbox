@@ -14,3 +14,5 @@ gemspec
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem "sqlite3", "= 1.3.5"
+gem "capybara"
+gem "bbq", :git => "git://github.com/drugpl/bbq.git"

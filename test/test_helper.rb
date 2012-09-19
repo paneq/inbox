@@ -8,3 +8,7 @@ Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
+require "bbq/test_unit"
+require "bbq/test_user"
+require "bbq/test_user/eyes"
