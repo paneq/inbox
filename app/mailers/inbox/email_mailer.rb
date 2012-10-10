@@ -9,8 +9,8 @@ module Inbox
     end
 
     def rich_html
-      mail(to: "example@example.org") do |format|
-        format.html { render "rubygems", layout: false }
+      mail(:to => "example@example.org") do |format|
+        format.html { render "rubygems", :layout => false }
       end
     end
 
