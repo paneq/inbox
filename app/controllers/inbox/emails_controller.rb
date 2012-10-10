@@ -1,10 +1,13 @@
 require 'mail'
 require 'pathname'
+require 'rails_autolink/helpers'
 
 module Inbox
   class EmailsController < ApplicationController
 
     layout 'inbox/inbox'
+    helper_method :html_part?
+
     before_filter do
       @mail = params[:mail]
       mailer = case ActionMailer::Base.delivery_method
@@ -32,6 +35,8 @@ module Inbox
         content_type = Rack::Mime.mime_type(format)
         @body_part = @email.parts.find { |part| part.content_type.match(content_type) } || @email.parts.first
       end
+
+      @body_part.body = HtmlExtraction.new(@body_part.body).converted_body if html_part?
     end
 
     def new
@@ -46,6 +51,12 @@ module Inbox
       else
         render :new
       end
+    end
+
+    private
+
+    def html_part?
+      @body_part.content_type && @body_part.content_type.match(/text\/html/)
     end
 
   end

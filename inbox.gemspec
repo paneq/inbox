@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2"
   s.add_dependency "rails_autolink", "~> 1.0.9"
+  s.add_dependency "premailer", "~> 1.7.3"
+  s.add_dependency "nokogiri", "~> 1.5.5"
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"

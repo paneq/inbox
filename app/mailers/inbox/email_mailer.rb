@@ -4,8 +4,15 @@ module Inbox
 
     def normal(headers, body)
       mail(headers) do |format|
-        format.html { render :text => body }
+        format.text { render :text => body }
       end
     end
+
+    def rich_html
+      mail(to: "example@example.org") do |format|
+        format.html { render "rubygems", layout: false }
+      end
+    end
+
   end
 end

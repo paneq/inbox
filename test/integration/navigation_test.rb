@@ -21,5 +21,15 @@ class NavigationTest < Bbq::TestCase
     assert @user.see? "How are you"
   end
 
+  test "rich html email has one body only" do
+    @user.visit "/inbox/examples/rich_html"
+    @user.visit "/inbox/example@example.org/emails/new"
+    @user.click_on "Rich html"
+    assert_equal 1, @user.page.driver.source.split.select{|line| line.downcase.include?("<html") }.size
+    # @user.page.all(:xpath, "//body").size - nokogiri ignores invalid html inside html
+    # Anything that goes through nokogiri will not properly check lik3
+    # @user.page.html etc...
+  end
+
 end
 

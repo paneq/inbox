@@ -28,7 +28,7 @@
 
   <% if @email.multipart? %>
     <p class="alternate">
-      <% if @body_part.content_type && @body_part.content_type.match(/text\/html/) %>
+      <% if html_part? %>
         <a href="<%= :x %>.txt">View plain text version</a>
       <% else %>
         <a href="<%= :y %>.html">View HTML version</a>
@@ -38,11 +38,11 @@
 </div>
 
 <div id="message_body">
-  <% if @body_part.content_type && @body_part.content_type.match(/text\/html/) %>
+  <% if html_part? %>
     <%= raw @body_part.body %>
   <% else %>
     <pre id="message_body">
-      <%= auto_link @body_part.body %>
+      <%= auto_link @body_part.body.to_s %>
     </pre>
   <% end %>
 </div>

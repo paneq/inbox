@@ -10,7 +10,7 @@
                 <%= email.subject %>
               </h1>
               <p>
-                <%= email.from.join(", ") %>
+                <%= Array.wrap(email.from).join(", ") %>
               </p>
             <% end %>
           </li>
