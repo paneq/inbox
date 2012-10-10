@@ -9,7 +9,8 @@ module Inbox
 
     def initialize(html)
       premailer   = Premailer.new(StringIO.new(html.to_s))
-      noko        = Nokogiri::HTML(premailer.to_inline_css)
+      inline_css  = premailer.to_inline_css
+      noko        = Nokogiri::HTML(inline_css)
       noko.search('//script').remove()
       @converted_body = noko.xpath('//body').first.inner_html
     end

@@ -33,7 +33,7 @@ class NavigationTest < Bbq::TestCase
 
   test "and html and text" do
     @user.visit "/inbox/examples/html_plus_text"
-    @user.visit "/inbox/example@example.org/emails/new"
+    @user.visit "/inbox/example@example.org/emails"
 
     @user.click_on "Html plus text"
     assert @user.see? "This is text with link"
@@ -42,6 +42,17 @@ class NavigationTest < Bbq::TestCase
     @user.click_on "View plain text version"
     assert @user.see? "This is text with link :"
     assert @user.find("#message_body").find_link("http://arkency.com")
+  end
+
+  test "html can be seen multiple times" do
+    @user.visit "/inbox/examples/html_real_body"
+    @user.visit "/inbox/example@example.org/emails"
+
+    @user.click_on "Html real body"
+    assert @user.see? "Inside body"
+
+    @user.click_on "Html real body"
+    assert @user.see? "Inside body"
   end
 
 end

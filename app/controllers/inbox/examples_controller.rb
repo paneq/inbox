@@ -10,6 +10,11 @@ module Inbox
       EmailMailer.html_plus_text.deliver
       render :text => "OK", :layout => false
     end
+
+    def html_real_body
+      EmailMailer.html_real_body.deliver
+      render :text => "OK", :layout => false
+    end
   end
 end
 

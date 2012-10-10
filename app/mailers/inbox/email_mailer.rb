@@ -21,5 +21,11 @@ module Inbox
       end
     end
 
+    def html_real_body
+      mail(:to => "example@example.org") do |format|
+        format.html
+      end
+    end
+
   end
 end

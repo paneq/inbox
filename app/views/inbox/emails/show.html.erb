@@ -39,7 +39,7 @@
 
 <div id="message_body">
   <% if html_part? %>
-    <%= raw @body_part.body %>
+    <%= raw @body %>
   <% else %>
     <pre id="message_body">
       <%= auto_link @body_part.body.to_s %>

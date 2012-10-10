@@ -36,7 +36,7 @@ module Inbox
         @body_part = @email.parts.find { |part| part.content_type.match(content_type) } || @email.parts.first
       end
 
-      @body_part.body = HtmlExtraction.new(@body_part.body).converted_body if html_part?
+      @body = HtmlExtraction.new(@body_part.body).converted_body if html_part?
     end
 
     def new
