@@ -31,5 +31,18 @@ class NavigationTest < Bbq::TestCase
     # @user.page.html etc...
   end
 
+  test "and html and text" do
+    @user.visit "/inbox/examples/htmlplustext"
+    @user.visit "/inbox/example@example.org/emails/new"
+
+    @user.click_on "Html plus text"
+    assert @user.see? "This is text with link"
+    assert @user.find("#the-link").find_link("Arkency")
+
+    @user.click_on "View plain text version"
+    assert @user.see? "This is text with link :"
+    assert @user.find("#message_body").find_link("http://arkency.com")
+  end
+
 end
 

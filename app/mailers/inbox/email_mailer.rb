@@ -14,5 +14,12 @@ module Inbox
       end
     end
 
+    def html_plus_text
+      mail(:to => "example@example.org") do |format|
+        format.html
+        format.text
+      end
+    end
+
   end
 end

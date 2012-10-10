@@ -5,5 +5,6 @@ Inbox::Engine.routes.draw do
   end
 
   get "examples/rich_html", :to => "examples#rich_html"
+  get "examples/html_plus_text", :to => "examples#html_plus_text"
   #get "examples/rich_html" # Rails namespace bug
 end

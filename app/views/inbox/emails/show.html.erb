@@ -29,9 +29,9 @@
   <% if @email.multipart? %>
     <p class="alternate">
       <% if html_part? %>
-        <a href="<%= :x %>.txt">View plain text version</a>
+        <%= link_to "View plain text version", email_path(:mail => params[:mail], :id => params[:id], :version => :text) %>
       <% else %>
-        <a href="<%= :y %>.html">View HTML version</a>
+        <%= link_to "View HTML version", email_path(:mail => params[:mail], :id => params[:id], :version => :html) %>
       <% end %>
     </p>
   <% end %>

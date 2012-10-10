@@ -31,7 +31,7 @@ module Inbox
       @body_part = @email
 
       if @email.multipart?
-        format = "." + (params[:format] || :html).to_s
+        format = "." + (params[:version] || :html).to_s
         content_type = Rack::Mime.mime_type(format)
         @body_part = @email.parts.find { |part| part.content_type.match(content_type) } || @email.parts.first
       end
